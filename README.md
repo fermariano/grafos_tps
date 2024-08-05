@@ -1,7 +1,7 @@
 # Arquivos relacionados aos estudos de Grafos
 ## Informações Gerias
 
-- Integrantes:
-> Arthur
-> Fernanda
-> Luis
+Integrantes:
+> - Arthur
+> - Fernanda
+> - Luis
