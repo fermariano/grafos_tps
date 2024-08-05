@@ -2,6 +2,6 @@
 ## Informações Gerias
 
 - Integrantes:
-> Arthur\n
-> Fernanda\n
-> Luis\n
+> Arthur
+> Fernanda
+> Luis
