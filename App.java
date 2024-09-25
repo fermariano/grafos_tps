@@ -3,7 +3,7 @@ public class App {
     public static void main(String[] args) {
 
         GeradorDeGrafos gerador = new GeradorDeGrafos();
-        gerador.gerarGrafoAleatorio(100000, null);
+        gerador.gerarGrafoAleatorio(1000, null);
         
         // Importa a questão 1
 
