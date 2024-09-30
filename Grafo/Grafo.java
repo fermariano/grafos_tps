@@ -35,17 +35,33 @@ public class Grafo {
             adicionarVertice(chave2);
             vertice2 = vertices_map.get(chave2);
         }
-        
         aresta_len++;
         Aresta aresta = new Aresta(vertice1, vertice2);
-
         // Adiciona a aresta em ambos os vértices
         vertice1.adicionarAresta(aresta);
         vertice2.adicionarAresta(aresta);
     }
-
+    
+    
+    public Vertice removeVertice(Vertice v){
+        
+        if(vertices_map.get(v.getChave()) == null){
+            throw new IllegalArgumentException("Vertice não existe");
+        }
+        List<Aresta> arestas = v.getArestasList();
+        for (Aresta aresta : arestas){
+            Vertice w = aresta.get_vertice_incidente(v);
+            w.removerAresta(v);
+        }
+        return  null;
+    }
+    
     public void removeAresta(Vertice v, Vertice w){
-
+        if(v.contemArestaCom(w)){
+            v.removerAresta(w);
+            w.removerAresta(v);
+            aresta_len--;
+        }
     }
 
     public Vertice getVertice(int chave) {

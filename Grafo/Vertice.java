@@ -1,6 +1,8 @@
 package Grafo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 // Classe Vertice
@@ -19,6 +21,10 @@ public class Vertice {
 
     public Map<String, Aresta> getArestas() {
         return arestas;
+    }
+
+    public List<Aresta> getArestasList(){
+        return new ArrayList<>(arestas.values());
     }
 
     public void adicionarAresta(Aresta aresta) {

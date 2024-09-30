@@ -23,6 +23,7 @@ public class GeradorDeGrafos {
         if (numeroDeArestas == null) {
             Random rand = new Random();
             int minAresta = numeroDeVertices - 1;
+            //no maximo quero 10 vezes o numero de vertices
             numeroDeArestas = rand.nextInt(minAresta * 10 - minAresta) + minAresta;
         }
 
