@@ -23,7 +23,7 @@ public class Vertice {
         return arestas;
     }
 
-    public List<Aresta> getArestasList(){
+    public List<Aresta> getArestasList() {
         return new ArrayList<>(arestas.values());
     }
 
@@ -41,11 +41,11 @@ public class Vertice {
         return arestas.containsKey(hashKey);
     }
 
-    public void removerAresta(Vertice w){
+    public void removerAresta(Vertice w) {
         int key1 = this.chave;
         int key2 = w.getChave();
         String hashKey = key1 + " " + key2;
         arestas.remove(hashKey);
     }
-    
+
 }
