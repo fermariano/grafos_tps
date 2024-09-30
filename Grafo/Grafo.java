@@ -10,6 +10,8 @@ import java.util.Map;
 public class Grafo {
     
     private Map<Integer, Vertice> vertices_map;
+    int vertice_len = 0 ;
+    int aresta_len = 0;
 
     public Grafo() {
         vertices_map = new HashMap<>();
@@ -18,6 +20,7 @@ public class Grafo {
     public void adicionarVertice(int chave) {
         if (!vertices_map.containsKey(chave)) {
             vertices_map.put(chave, new Vertice(chave));
+            vertice_len++;
         }
     }
 
@@ -33,7 +36,7 @@ public class Grafo {
             vertice2 = vertices_map.get(chave2);
         }
         
-
+        aresta_len++;
         Aresta aresta = new Aresta(vertice1, vertice2);
 
         // Adiciona a aresta em ambos os vértices
