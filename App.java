@@ -4,7 +4,7 @@ import Grafo.Grafo;
 public class App {
     public static void main(String[] args) {
 
-        Grafo grafo = GeradorDeGrafos.gerarGrafoAleatorioConexo(1000, 1200);
+        Grafo grafo = GeradorDeGrafos.gerarGrafoAleatorioConexo(10000, 5000);
     
         
         // Importa a questão 1
