@@ -1,5 +1,6 @@
 import Grafo.GeradorDeGrafos;
 import Grafo.Grafo;
+import q3.Tarjan;
 
 public class App {
     public static void main(String[] args) {
@@ -13,5 +14,6 @@ public class App {
         System.out.println("grafo tem joelho = " + q2.Implementacao2.TemArticulacao(grafo));
 
         // Importa a questão 3
+        Tarjan.tarjanIterativo(grafo);
     }
 }
