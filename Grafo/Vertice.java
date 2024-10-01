@@ -48,4 +48,8 @@ public class Vertice {
         arestas.remove(hashKey);
     }
 
+    public int getGrau() {
+        return arestas.size();
+    }
+
 }
