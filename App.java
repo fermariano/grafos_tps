@@ -5,7 +5,7 @@ import q3.Tarjan;
 public class App {
     public static void main(String[] args) {
 
-        Grafo grafo = GeradorDeGrafos.gerarGrafoAleatorioConexo(10000, 5000);
+        Grafo grafo = GeradorDeGrafos.gerarGrafoAleatorioConexo(4, 45);
     
         
         // Importa a questão 1

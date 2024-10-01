@@ -227,7 +227,7 @@ public class Tarjan {
         System.out.println("Pontos de articulação no grafo:");
         for (int i = 0; i < gf.get_vertices_len(); i++) {
             if (ap[i]) {
-                System.out.println("Joelho do tarjan: " + i);
+                System.out.println("Joelho do tarjan: {" + i + "}");
             }
         }
     }
