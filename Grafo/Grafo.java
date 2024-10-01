@@ -7,11 +7,12 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 // Classe Grafo
 public class Grafo {
 
-    private Map<Integer, Vertice> vertices_map;
+    final private Map<Integer, Vertice> vertices_map;
     int vertice_len = 0;
     int aresta_len = 0;
 
@@ -19,10 +20,11 @@ public class Grafo {
         vertices_map = new HashMap<>();
     }
 
-    public int get_vertices_len(){
+    public int get_vertices_len() {
         return this.vertice_len;
     }
-    public int get_arestas_len(){
+
+    public int get_arestas_len() {
         return this.aresta_len;
     }
 
@@ -134,7 +136,7 @@ public class Grafo {
                 visitados.add(v);
             }
             boolean descobertos = false;
-       List<Aresta> vizinhanca = v.getArestasList(); // pega vizinhança
+            List<Aresta> vizinhanca = v.getArestasList(); // pega vizinhança
             for (Aresta vizinha : vizinhanca) {
 
                 if (arestas_marcadas.contains(vizinha)) { // se a aresta ja foi marcada é tchau
@@ -149,16 +151,88 @@ public class Grafo {
                     break;
                 }
             }
-            
+
             if (!descobertos) {
                 // so popo se o vertice não descobriu ninguem
                 pilha.pop();
             }
         }
 
-        if(visitados.size() == this.vertice_len){
+        if (visitados.size() == this.vertice_len) {
             return true;
         }
         return false;
     }
+
+
+
+
+    /// IMPLEMENTAÇÃO 2
+    public boolean findCycleBetween(Vertice v1, Vertice v2) {
+        HashSet<Aresta> arestasMarcadas = new HashSet<>();
+        HashSet<Vertice> visitados = new HashSet<>();
+
+        // Realiza a busca de v1 para v2 e marca as arestas
+        if (!buscarCaminho(v1, v2, visitados, arestasMarcadas)) {
+            return false;
+        }
+
+
+        // Realiza a busca de v2 para v1 sem repetir arestas e vértices
+        return buscarCaminho(v2, v1, visitados, arestasMarcadas);
+    }
+
+    private boolean buscarCaminho(Vertice inicio, Vertice destino, HashSet<Vertice> visitados,
+        HashSet<Aresta> arestasMarcadas) {
+        Deque<Vertice> pilha = new ArrayDeque<>();
+        pilha.push(inicio);
+
+        while (!pilha.isEmpty()) {
+            Vertice vertice = pilha.peek();
+
+            if (!visitados.contains(vertice)) {
+                visitados.add(vertice);
+            }
+
+            boolean descobertos = false;
+            PriorityQueue<Vertice> vizinhanca = new PriorityQueue<>(
+                    (e1, e2) -> Integer.compare(e1.getGrau(), e2.getGrau()));
+
+            // Adiciona vizinhos não visitados à fila de prioridade
+            for (Aresta aresta : vertice.getArestasList()) {
+                if (arestasMarcadas.contains(aresta)) {
+                    continue;
+                }
+                Vertice w = aresta.get_vertice_incidente(vertice);
+
+                // Se encontrar o destino, finalize a busca
+                if (w == destino) {
+                    return true;
+                }
+
+                // Adiciona a aresta à lista de marcadas e o vértice à fila de prioridade
+                arestasMarcadas.add(aresta);
+                if (!visitados.contains(w)) {
+                    vizinhanca.add(w);
+                }
+            }
+
+            // Processa o vértice de menor grau da fila de prioridade
+            while (!vizinhanca.isEmpty()) {
+                Vertice w = vizinhanca.poll();
+                if (!visitados.contains(w)) {
+                    pilha.push(w);
+                    descobertos = true;
+                    break;
+                }
+            }
+
+            // Se não houver vizinhos descobertos, retrocede na busca
+            if (!descobertos) {
+                pilha.pop();
+            }
+        }
+        return false;
+    }
+
 }
