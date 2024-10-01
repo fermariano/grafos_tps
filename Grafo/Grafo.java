@@ -158,10 +158,7 @@ public class Grafo {
             }
         }
 
-        if (visitados.size() == this.vertice_len) {
-            return true;
-        }
-        return false;
+        return visitados.size() == this.vertice_len;    
     }
 
 
