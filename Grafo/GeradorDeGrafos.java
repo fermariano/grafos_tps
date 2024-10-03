@@ -12,14 +12,18 @@ public class GeradorDeGrafos {
             grafo.adicionarVertice(i);
         }
 
+        // Número máximo de arestas possíveis
         int maxArestasPossiveis = (numeroDeVertices * (numeroDeVertices - 1)) / 2;
 
+
+        // Pega 10x o número minimo de arestas para ligar o grafo
         if (numeroDeArestas == null) {
             Random rand = new Random();
             int minAresta = numeroDeVertices - 1;
             numeroDeArestas = rand.nextInt(minAresta * 10 - minAresta) + minAresta;
         }
 
+        // Número mínimo de arestas possíveis
         numeroDeArestas = Math.min(numeroDeArestas, maxArestasPossiveis);
         System.out.println("Gerando grafo com " + numeroDeVertices + " vértices e " + numeroDeArestas + " arestas");
         System.out.println("Densidade: " + ((double) numeroDeArestas / (numeroDeVertices * (numeroDeVertices - 1))));

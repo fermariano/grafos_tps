@@ -1,5 +1,8 @@
 package q3;
 
+// Base para criação do método https://www.thealgorists.com/Algo/GraphTheory/Tarjan/ArticulationPoint
+// Base para criação do método https://www.baeldung.com/cs/graph-articulation-points 
+
 import Grafo.Aresta;
 import Grafo.Grafo;
 import Grafo.Vertice;
